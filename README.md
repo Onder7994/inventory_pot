@@ -29,3 +29,12 @@ go build -o inventory_app
 ### Usage
 
 Any place on you infrastacture. In static file `admin.html` you can add mock data with another honeypot host. In `/debug` route add some info for another honeypot in you infra.
+
+## Environment
+
+1. APP_PORT - http port. Default `8080`.
+2. ADMIN_USER.
+3. ADMIN_PASSWORD
+4. APP_LOG_FILE. Default - `/var/log/honeypot/inventory_pot.json`.
+
+Usage `.env` file or just inject env in container or process.
