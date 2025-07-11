@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Inventory Resource</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background: #f2f4f8;
+    }
+
+    header {
+      background-color: #4b6cb7;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 30px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #f0f2f5;
+    }
+
+    tr:hover {
+      background-color: #f9f9f9;
+    }
+
+    .status {
+      padding: 4px 8px;
+      border-radius: 4px;
+      color: white;
+      font-size: 12px;
+      display: inline-block;
+    }
+
+    .online {
+      background-color: #28a745;
+    }
+
+    .offline {
+      background-color: #dc3545;
+    }
+
+    .maintenance {
+      background-color: #ffc107;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <header>Инвентаризационные хосты</header>
+  <div class="container">
+    <table id="hostsTable">
+      <thead>
+        <tr>
+          <th>Hostname</th>
+          <th>IP Address</th>
+          <th>Operating System</th>
+          <th>Status</th>
+          <th>Location</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Populated via JavaScript -->
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    const hosts = [
+      { name: "host-1", ip: "192.168.0.10", os: "Debian 12", status: "online", location: "DC EU" },
+      { name: "host-2", ip: "192.168.0.11", os: "Debian 12", status: "online", location: "DC FR" },
+      { name: "host-3", ip: "192.168.0.12", os: "Debian 12", status: "online", location: "DC GE" },
+    ];
+
+    const tbody = document.querySelector("#hostsTable tbody");
+
+    hosts.forEach(host => {
+      const row = document.createElement("tr");
+
+      row.innerHTML = `
+        <td>${host.name}</td>
+        <td>${host.ip}</td>
+        <td>${host.os}</td>
+        <td><span class="status ${host.status}">${host.status}</span></td>
+        <td>${host.location}</td>
+      `;
+
+      tbody.appendChild(row);
+    });
+  </script>
+</body>
+</html>
